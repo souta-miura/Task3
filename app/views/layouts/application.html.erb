@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%=javascript_pack_tag'application','data-turbolinks-track':'reload'%>
   </head>
 
   <body>
@@ -39,8 +39,8 @@
               <% end %>
           </li>
           <li class="nav-item">
-              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-right-from-bracket"></i> Log out
+              <%= link_to '/users/sign_out', method: :get, class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-out-alt"></i> Log out
               <% end %>
           </li>
           <% else %>
@@ -50,7 +50,7 @@
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to about_path, class: 'nav-link text-light' do %>
+            <%= link_to '/home/about', class: 'nav-link text-light' do %>
             <i class="fas fa-link"></i> About
             <% end %>
           </li>
@@ -73,7 +73,9 @@
   </nav>
 </header>
 <main>
-  <p id="notice"></p>
+  <p id="notice">
+    <%= flash[:notice] %>
+  </p>
     <%= yield %>
 </main>
 <footer>
